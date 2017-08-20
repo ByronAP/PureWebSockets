@@ -3,14 +3,24 @@
   <PropertyGroup>
     <VersionPrefix>1.4.0</VersionPrefix>
     <TargetFramework>netstandard1.4</TargetFramework>
-    <AssemblyName>PureWebSockets</AssemblyName>
-    <PackageId>PureWebSockets</PackageId>
+    <AssemblyName>PureWebSockets_WebsocketLite</AssemblyName>
+    <PackageId>PureWebSockets_WebsocketLite</PackageId>
     <NetStandardImplicitPackageVersion>1.6.1</NetStandardImplicitPackageVersion>
     <PackageTargetFallback>$(PackageTargetFallback);dnxcore50</PackageTargetFallback>
     <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
     <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
     <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
     <Version>1.5.0</Version>
+    <Authors>ByronP</Authors>
+    <Description>A cross platform WebSocket client library for .NET NetStandard core (backed by WebsocketClientLite).</Description>
+    <PackageReleaseNotes>See git for list of changes.</PackageReleaseNotes>
+    <RepositoryUrl>https://github.com/ByronAP/PureWebSockets</RepositoryUrl>
+    <PackageIconUrl>https://raw.githubusercontent.com/coinigy/PureWebSockets/master/PWSIcon.ico</PackageIconUrl>
+    <PackageProjectUrl>https://github.com/ByronAP/PureWebSockets</PackageProjectUrl>
+    <Copyright>Copyright 2017 Coinigy Inc.</Copyright>
+    <PackageTags>websocket, netstandard, core, client, websockets</PackageTags>
+    <PackageLicenseUrl>https://raw.githubusercontent.com/ByronAP/PureWebSockets/master/LICENSE</PackageLicenseUrl>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <ItemGroup>

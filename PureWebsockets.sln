@@ -12,7 +12,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PureWebsocketsTest", "src\PureWebsocketsTest\PureWebsocketsTest.csproj", "{DB9C7CFC-C334-4687-A81F-73516258F7B1}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PureWebSockets", "src\PureWebSockets\PureWebSockets.csproj", "{2E742D78-651E-41C4-9908-72E48874FF8C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PureWebSockets_WebsocketLite", "src\PureWebSockets\PureWebSockets_WebsocketLite.csproj", "{2E742D78-651E-41C4-9908-72E48874FF8C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

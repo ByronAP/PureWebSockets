@@ -14,7 +14,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\PureWebSockets\PureWebSockets.csproj" />
+    <ProjectReference Include="..\PureWebSockets\PureWebSockets_WebsocketLite.csproj" />
   </ItemGroup>
 
 </Project>

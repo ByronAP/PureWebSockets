@@ -37,7 +37,6 @@ namespace PureWebSockets
         public Dictionary<string, string> RequestHeaders { get; set; }
         public int DisconnectWait { get; set; }
 
-        public event Data OnData;
         public event Message OnMessage;
         public event StateChanged OnStateChanged;
         public event Opened OnOpened;
@@ -156,6 +155,8 @@ namespace PureWebSockets
                     }
                 }).Wait(15000);
                 Log($"Connect result: {_ws.IsConnected}");
+                if (_ws.IsConnected)
+                    OnOpened?.Invoke();
                 return _ws.IsConnected;
             }
             catch (Exception ex)

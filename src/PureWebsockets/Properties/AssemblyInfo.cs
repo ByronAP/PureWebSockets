@@ -7,7 +7,7 @@ using System.Runtime.InteropServices;
 
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Coinigy Inc.")]
-[assembly: AssemblyProduct("PureWebSockets")]
+[assembly: AssemblyProduct("PureWebSockets_WebsocketLite")]
 [assembly: AssemblyTrademark("2017 Coinigy Inc.")]
 
 // Setting ComVisible to false makes the types in this assembly not visible
