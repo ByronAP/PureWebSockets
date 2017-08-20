@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Linq.Expressions;
-using System.Net.WebSockets;
 using System.Threading;
 using PureWebSockets;
 
@@ -16,14 +14,14 @@ namespace CoreWebsocketsTest
             _timer = new Timer(OnTick, null, 2000, 1);
 
             RESTART:
-            _ws = new PureWebSocket("wss://echo.websocket.org", new ReconnectStrategy(10000, 60000));
-            _ws.DebugMode = true;
+            _ws = new PureWebSocket("wss://echo.websocket.org", new ReconnectStrategy(10000, 60000), null, 100);
+            _ws.DebugMode = false;
             _ws.SendDelay = 100;
             _ws.OnStateChanged += Ws_OnStateChanged;
             _ws.OnMessage += Ws_OnMessage;
             _ws.OnClosed += Ws_OnClosed;
             _ws.OnSendFailed += Ws_OnSendFailed;
-            _ws.Connect();
+            var res = _ws.ConnectAsync().Result;
             
             Console.ReadLine();
             _ws.Dispose(true);
@@ -40,16 +38,18 @@ namespace CoreWebsocketsTest
 
         private static void OnTick(object state)
         {
-            if (_ws.State != WebSocketState.Open) return;
+            if (!_ws.IsConnected) return;
 
-            if (_sendCount == 1000)
+            if (_ws.SendQueueLength >= _ws.SendQueueLimit)
             {
-                _timer = new Timer(OnTick, null, 30000, 1);
+                _timer.Dispose();
+                _timer = new Timer(OnTick, null, 60000, 1);
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine($"{DateTime.Now} Max Send Count Reached: {_sendCount}");
                 Console.ResetColor();
                 Console.WriteLine("");
                 _sendCount = 0;
+                return;
             }
             if (_ws.Send(_sendCount + " | " + DateTime.Now.Ticks.ToString()))
             {
@@ -61,10 +61,10 @@ namespace CoreWebsocketsTest
             }
         }
 
-        private static void Ws_OnClosed(WebSocketCloseStatus reason)
+        private static void Ws_OnClosed()
         {
             Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine($"{DateTime.Now} Connection Closed: {reason}");
+            Console.WriteLine($"{DateTime.Now} Connection Closed");
             Console.ResetColor();
             Console.WriteLine("");
             Console.ReadLine();
@@ -78,10 +78,10 @@ namespace CoreWebsocketsTest
             Console.WriteLine("");
         }
 
-        private static void Ws_OnStateChanged(WebSocketState newState, WebSocketState prevState)
+        private static void Ws_OnStateChanged(bool connected)
         {
             Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine($"{DateTime.Now} Status changed from {prevState} to {newState}");
+            Console.WriteLine($"{DateTime.Now} Status changed to {connected}");
             Console.ResetColor();
             Console.WriteLine("");
         }

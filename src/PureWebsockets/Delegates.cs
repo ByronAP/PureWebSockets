@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Net.WebSockets;
 
 namespace PureWebSockets
 {
@@ -7,11 +6,11 @@ namespace PureWebSockets
 
     public delegate void Data(byte[] data);
 
-    public delegate void StateChanged(WebSocketState newState, WebSocketState prevState);
+    public delegate void StateChanged(bool connected);
 
     public delegate void Opened();
 
-    public delegate void Closed(WebSocketCloseStatus reason);
+    public delegate void Closed();
 
     public delegate void Error(Exception ex);
 
